@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#1d2671,#c33764);
+    min-height:100vh;
+    padding:40px;
+    color:white;
+}
+
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:42px;
+    letter-spacing:2px;
+    text-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+
+form{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+input{
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    width:250px;
+    font-size:15px;
+    transition:0.4s;
+}
+
+input:focus{
+    transform:scale(1.05);
+    box-shadow:0 0 15px #fff;
+}
+
+
+button,a{
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s ease;
+}
+
+button{
+    background:#00c9ff;
+    color:white;
+}
+
+button:hover{
+    transform:translateY(-5px) rotateX(15deg);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.add-btn{
+    background:#00ff99;
+    color:black;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.add-btn:hover{
+    transform:perspective(500px) rotateX(20deg) scale(1.08);
+    box-shadow:0 15px 30px rgba(0,0,0,0.5);
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+th{
+    background:rgba(0,0,0,0.3);
+    padding:18px;
+    font-size:17px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+tr{
+    transition:0.3s;
+}
+
+tr:hover{
+    background:rgba(255,255,255,0.15);
+    transform:scale(1.01);
+}
+
+.view-btn{
+    background:#3498db;
+    color:white;
+}
+
+.edit-btn{
+    background:#f39c12;
+    color:white;
+}
+
+.delete-btn{
+    background:#e74c3c;
+    color:white;
+}
+
+.view-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover{
+    transform:translateY(-4px) scale(1.08);
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+
+.form-container{
+    width:450px;
+    margin:auto;
+    background:rgba(255,255,255,0.12);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.form-container input{
+    width:100%;
+    margin-bottom:20px;
+}
+
+.details-card{
+    width:500px;
+    margin:auto;
+    background:rgba(255,255,255,0.12);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    line-height:2;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.details-card p{
+    font-size:18px;
+}
+/* Detail Boxes */
+
+.detail-box{
+    background:rgba(255,255,255,0.1);
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:15px;
+    transition:0.4s;
+    border-left:5px solid #00ffcc;
+}
+
+.detail-box:hover{
+    transform:translateX(10px) scale(1.03);
+    background:rgba(255,255,255,0.2);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.detail-box span{
+    font-size:14px;
+    color:#00ffcc;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.detail-box p{
+    font-size:20px;
+    margin-top:5px;
+    color:white;
+}
+
+/* Fancy Form Animation */
+
+.form-container{
+    animation:floatBox 3s ease-in-out infinite;
+}
+
+@keyframes floatBox{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* Button Glow */
+
+button:hover{
+    box-shadow:
+    0 0 10px #00c9ff,
+    0 0 20px #00c9ff,
+    0 0 40px #00c9ff;
+}
+
+/* Page Fade Animation */
+
+body{
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}

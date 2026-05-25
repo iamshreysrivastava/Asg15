@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root {
+            --cream: #f5f0e8; --cream-dark: #ece5d8; --cream-border: #ddd4c0;
+            --green: #1a4a3a; --green-mid: #2d6b54; --green-light: #e8f2ed;
+            --amber: #c8862a;
+            --ink: #1c1a17; --ink-mid: #3d3a33; --ink-soft: #6b6558; --ink-muted: #9e9488;
+            --white: #ffffff;
+            --radius-xs: 6px; --radius-sm: 10px; --radius-lg: 24px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
+        .topbar {
+            background: var(--green); padding: 0 52px; height: 68px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .topbar-brand { display: flex; align-items: center; gap: 14px; }
+        .brand-icon {
+            width: 38px; height: 38px; background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.2); border-radius: var(--radius-xs);
+            display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px;
+        }
+        .brand-name { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 700; color: #fff; }
+        .brand-label { font-size: 9.5px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+        .brand-text { display: flex; flex-direction: column; gap: 1px; }
+        .back-btn {
+            display: flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.7); font-size: 13.5px; font-weight: 600;
+            background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.15);
+            padding: 8px 18px; border-radius: var(--radius-xs);
+            cursor: pointer; font-family: 'Outfit', sans-serif; transition: all 0.2s;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+        .page-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 52px 24px; }
+        .form-card {
+            width: 100%; max-width: 520px;
+            background: var(--white); border: 1.5px solid var(--cream-border);
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: 0 8px 40px rgba(28,26,23,0.10);
+            animation: up 0.4s ease both;
+        }
+        @keyframes up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+        .form-header { background: var(--green); padding: 28px 36px; }
+        .form-header-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+        .form-header h1 { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+        .form-header h1 em { font-style: italic; color: #a8d4be; }
+        .form-body { padding: 32px 36px 36px; }
+        .roll-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 16px;
+            background: var(--green-light);
+            border: 1.5px solid rgba(26,74,58,0.18);
+            border-radius: var(--radius-xs);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px; font-weight: 700;
+            color: var(--green); letter-spacing: 1px;
+            width: 100%;
+        }
+        .roll-badge i { font-size: 11px; opacity: 0.5; }
+        .lock-hint { font-size: 11px; color: var(--ink-muted); font-weight: 500; margin-top: 5px; display: flex; align-items: center; gap: 5px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .form-group { display: flex; flex-direction: column; gap: 7px; }
+        .form-group.full { grid-column: 1 / -1; }
+        label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink-soft); }
+        input {
+            padding: 13px 15px; background: var(--cream);
+            border: 1.5px solid var(--cream-border); border-radius: var(--radius-xs);
+            color: var(--ink); font-family: 'Outfit', sans-serif;
+            font-size: 14.5px; font-weight: 500; outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; width: 100%;
+        }
+        input::placeholder { color: var(--ink-muted); font-weight: 400; }
+        input:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(26,74,58,0.09); background: var(--white); }
+        .divider { height: 1px; background: var(--cream-border); margin: 24px 0; }
+        .form-actions { display: flex; gap: 12px; margin-top: 28px; }
+        .btn-primary {
+            flex: 1; padding: 14px; background: var(--green); color: white;
+            border: none; border-radius: var(--radius-xs);
+            font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.2s; box-shadow: 0 4px 16px rgba(26,74,58,0.25);
+        }
+        .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); }
+        .btn-secondary {
+            padding: 14px 22px; background: transparent; color: var(--ink-soft);
+            border: 1.5px solid var(--cream-border); border-radius: var(--radius-xs);
+            font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--ink-muted); color: var(--ink); background: var(--cream); }
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <div class="topbar-brand">
+        <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="brand-text">
+            <span class="brand-label">Administration Portal</span>
+            <span class="brand-name">Student Management</span>
+        </div>
+    </div>
+    <button class="back-btn" onclick="window.location.href='index.html'">
+        <i class="fa-solid fa-arrow-left"></i> Back to Records
+    </button>
+</div>
+
+<div class="page-body">
+    <div class="form-card">
+        <div class="form-header">
+            <div class="form-header-label">Edit Entry</div>
+            <h1>Edit <em>Student</em></h1>
+        </div>
+        <div class="form-body">
+            <input type="hidden" id="editId">
+
+            <div class="form-group full" style="margin-bottom: 0;">
+                <label>Roll Number</label>
+                <div class="roll-badge"><span id="editRollNoDisplay">—</span></div>
+                <input type="hidden" id="editRollNo">
+                <div class="lock-hint"><i class="fa-solid fa-lock"></i> Auto-assigned · cannot be changed</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="editName">Full Name</label>
+                    <input type="text" id="editName" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="editAge">Age</label>
+                    <input type="number" id="editAge" placeholder="Age">
+                </div>
+                <div class="form-group">
+                    <label for="editCourse">Course</label>
+                    <input type="text" id="editCourse" placeholder="e.g. B.Tech CSE">
+                </div>
+                <div class="form-group">
+                    <label for="editCity">City</label>
+                    <input type="text" id="editCity" placeholder="e.g. New Delhi">
+                </div>
+                <div class="form-group full">
+                    <label for="editEmail">Email Address</label>
+                    <input type="email" id="editEmail" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn-secondary" onclick="window.location.href='index.html'">Cancel</button>
+                <button class="btn-primary" onclick="updateStudent()">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

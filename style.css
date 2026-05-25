@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --cream:         #f5f0e8;
+    --cream-dark:    #ece5d8;
+    --cream-border:  #ddd4c0;
+    --green:         #1a4a3a; /* FIX: Added primary green theme base color */
+    --green-mid:     #2d6b54;
+    --green-light:   #e8f2ed;
+    --green-glow:    rgba(26,74,58,0.15);
+    --amber:         #c8862a;
+    --amber-light:   #fdf3e3;
+    --red:           #c0392b;
+    --red-light:     #fdf0ee;
+    --ink:           #1c1a17;
+    --ink-mid:       #3d3a33;
+    --ink-soft:      #6b6558;
+    --ink-muted:     #9e9488;
+    --white:         #ffffff;
+    --radius-xs:     6px;
+    --radius-sm:     10px;
+    --radius-md:     16px;
+    --radius-lg:     24px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    color: var(--ink);
+}
+
+/* ── TOPBAR ──────────────────────────────── */
+.topbar {
+    background: var(--green);
+    padding: 0 52px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.brand-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-xs);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 19px;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+}
+
+.brand-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+
+.add-page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 26px;
+    background: var(--amber);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 16px rgba(200,134,42,0.35);
+}
+
+.add-page-btn:hover {
+    background: #b5761f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(200,134,42,0.4);
+}
+
+/* ── HERO BAND ───────────────────────────── */
+.hero-band {
+    background: var(--green);
+    padding: 24px 52px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: #a8d4be;
+}
+
+.hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+}
+
+.hero-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.hero-stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+}
+
+/* ── CONTENT AREA ────────────────────────── */
+.content {
+    padding: 40px 52px 60px;
+}
+
+/* ── SECTION HEAD ────────────────────────── */
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title::before {
+    content: '';
+    width: 5px; height: 26px;
+    background: var(--green);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.section-count {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: var(--cream-dark);
+    border: 1.5px solid var(--cream-border);
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+/* ── TABLE ───────────────────────────────── */
+.table-box {
+    background: var(--white);
+    border: 1.5px solid var(--cream-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(28,26,23,0.07);
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+thead tr {
+    border-bottom: 2px solid var(--cream-border);
+    background: var(--cream);
+}
+
+thead th {
+    padding: 16px 24px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+}
+
+thead th:first-child { padding-left: 32px; }
+thead th:last-child  { text-align: center; }
+
+tbody tr {
+    border-bottom: 1px solid #f0ebe0;
+    transition: background 0.15s;
+    cursor: default;
+}
+
+tbody tr:last-child { border-bottom: none; }
+
+tbody tr:hover { background: #faf7f2; }
+
+tbody td {
+    padding: 22px 24px;
+    vertical-align: middle;
+}
+
+tbody td:first-child { padding-left: 32px; }
+tbody td:last-child  { text-align: center; }
+
+/* Name cell */
+.td-name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--green-light);
+    border: 2px solid var(--cream-border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 18px}
+    /* Decorative Button Containers & Variations */
+.btn-custom-add {
+    background: linear-gradient(135deg, #2e5b4e, #23473d) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 22px !important;
+    border-radius: 30px !important; /* Elegant pill-shape curve */
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 12px rgba(46, 91, 78, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.btn-custom-add:hover {
+    transform: translateY(-2px); /* Gentle floating lift effect */
+    box-shadow: 0 6px 18px rgba(46, 91, 78, 0.35);
+    background: linear-gradient(135deg, #376d5e, #2e5b4e) !important;
+    color: #ffffff !important;
+}
+
+.btn-custom-add:active {
+    transform: translateY(1px);
+}
+
+.btn-custom-logout {
+    background: #ffffff !important;
+    color: #dc3545 !important;
+    border: 2px solid #f8d7da !important;
+    padding: 9px 20px !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.3px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.btn-custom-logout:hover {
+    background: #dc3545 !important; /* Turns dynamic red on focus hover */
+    color: #ffffff !important;
+    border-color: #dc3545 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.25);
+}
+
+.btn-custom-logout:active {
+    transform: translateY(1px);
+}
+
+/* Tracking utility adjustment */
+.tracking-wider {
+    font-size: 0.75rem !important;
+}
